@@ -1,0 +1,41 @@
+/*
+
+Dark Gray 1: #3B3E40
+Dark Gray 2: #313131
+Dark Gray 3: #262626
+
+*/
+
+body.login,
+html {
+	background: #3B3E40;
+}
+
+.login form {
+	background: #313131;
+	border: 1px solid #262626;
+	-webkit-box-shadow: rgba(38, 38, 38, 0.69) 0 4px 10px -1px;
+	box-shadow: rgba(38, 38, 38, 0.69) 0 4px 10px -1px;
+}
+
+.login h1 {
+	display: none;
+}
+
+.login label {
+	color: #fff;
+}
+
+.login form .input,
+.login input[type="text"] {
+	background: #3B3E40;
+	border: 1px solid #262626;
+	-webkit-box-shadow: inset 1px 1px 2px rgba(38, 38, 38, 0.20);
+	box-shadow: inset 1px 1px 2px rgba(38, 38, 38, 0.20);
+}
+
+.login #nav a,
+.login #backtoblog a {
+	color: #fff !important;
+	text-shadow: none;
+}

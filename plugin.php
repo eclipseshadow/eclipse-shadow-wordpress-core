@@ -4,7 +4,7 @@
 Plugin Name: Eclipse Shadow WP Core
 Plugin URI:
 Description: Eclipse Shadow's In-House WP Core Functionality & Modifications Plugin
-Version: 0.2.0
+Version: 0.2.1
 Author: Zach Lanich
 Author URI: https://www.ZachLanich.com
 License: Undecided
@@ -79,20 +79,20 @@ class Eclipse_Shadow_WP_Core {
 		if ( is_admin() ) {
 			// WP Admin
 
-			wp_enqueue_style( 'es_wp_core_admin', WP_PLUGIN_URL .'/'. basename( __DIR__ ) .'/lib/css/es_wp_core_admin.css', array(), 1.0 );
-			wp_enqueue_style( 'es_wp_admin_toolbar', WP_PLUGIN_URL .'/'. basename( __DIR__ ) .'/lib/css/es_wp_admin_toolbar.css', array(), 1.0 );
+			wp_enqueue_style( 'es_wp_core_admin', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_core_admin.css', array(), 1.0 );
+			wp_enqueue_style( 'es_wp_admin_toolbar', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_admin_toolbar.css', array(), 1.0 );
 		}
 		else {
 			// Front End
 
-			wp_enqueue_style( 'es_wp_admin_toolbar', WP_PLUGIN_URL .'/'. basename( __DIR__ ) .'/lib/css/es_wp_admin_toolbar.css', array(), 1.0 );
+			wp_enqueue_style( 'es_wp_admin_toolbar', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_admin_toolbar.css', array(), 1.0 );
 		}
 
 	}
 
 	public function _load_login_styles() {
 
-		wp_enqueue_style( 'es_wp_login', WP_PLUGIN_URL .'/'. basename( __DIR__ ) .'/lib/css/es_wp_login.css', array(), 1.0 );
+		wp_enqueue_style( 'es_wp_login', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_login.css', array(), 1.0 );
 
 	}
 

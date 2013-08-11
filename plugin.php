@@ -79,7 +79,7 @@ class Eclipse_Shadow_WP_Core {
 		if ( is_admin() ) {
 			// WP Admin
 
-			wp_enqueue_style( 'es_wp_core_admin', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_core_admin.css', array(), 1.0 );
+			wp_enqueue_style( 'es_wp_core_admin', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_core_admin.css', array(), 1.1 );
 			wp_enqueue_style( 'es_wp_admin_toolbar', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_admin_toolbar.css', array(), 1.0 );
 		}
 		else {

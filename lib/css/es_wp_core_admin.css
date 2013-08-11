@@ -575,6 +575,10 @@ th.sortable a:hover, th.sortable a:active, th.sortable a:focus {
 
 /* Buttons */
 
+/*
+ * @todo Black button press (active?) still has old text-shadow styles
+ */
+
 .wp-core-ui .button,
 .wp-core-ui .button-secondary,
 .wp-core-ui .button.button-small,

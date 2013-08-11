@@ -4,7 +4,7 @@
 Plugin Name: Eclipse Shadow WP Core
 Plugin URI:
 Description: Eclipse Shadow's In-House WP Core Functionality & Modifications Plugin
-Version: 0.2.1
+Version: 0.2.2
 Author: Zach Lanich
 Author URI: https://www.ZachLanich.com
 License: Undecided

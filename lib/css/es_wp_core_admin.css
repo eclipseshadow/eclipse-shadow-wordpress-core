@@ -209,14 +209,19 @@ body {
 /* Admin Vertical Menu Icons */
 
 #adminmenu li:hover div.wp-menu-image,
-#adminmenu li a:hover div.wp-menu-image {
-	background-position: -250px -25px !important;
+#adminmenu li a:hover div.wp-menu-image,
+#adminmenu .menu-icon-generic:hover div.wp-menu-image {
+	background-position: -250px -25px;
 }
 
-#adminmenu div.wp-menu-image {
+#adminmenu div.wp-menu-image,
+#adminmenu .menu-icon-generic div.wp-menu-image,
+#adminmenu .menu-icon-generic.wp-has-current-submenu div.wp-menu-image,
+#adminmenu .menu-icon-generic:hover.wp-has-current-submenu div.wp-menu-image,
+#adminmenu .menu-icon-generic.current div.wp-menu-image {
 	background-image: url(../images/icons_sprite.png);
 	background-size: auto;
-	background-position: -250px 0 !important;
+	background-position: -250px 0;
 	height: 25px;
 	width: 25px;
 	margin-right: 5px;

@@ -4,7 +4,7 @@
 Plugin Name: Eclipse Shadow WP Core
 Plugin URI:
 Description: Eclipse Shadow's In-House WP Core Functionality & Modifications Plugin
-Version: 0.2.4
+Version: 0.2.5
 Author: Zach Lanich
 Author URI: https://www.ZachLanich.com
 License: Undecided
@@ -42,7 +42,8 @@ class Eclipse_Shadow_WP_Core {
 		require_once 'lib/updater.php';
 
 		if ( !defined('WP_GITHUB_FORCE_UPDATE') ) {
-			define( 'WP_GITHUB_FORCE_UPDATE', true );
+			// For Debugging - Will force update checks on every page load
+			//define( 'WP_GITHUB_FORCE_UPDATE', true );
 		}
 
 		if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin

@@ -1,3 +1,9 @@
+/*
+ * Admin Re-Theme (High Contrast) - As well as some other styles
+ *
+ * @todo Single "Links" edit page is not yet styled properly
+ */
+
 /** CKEditor WYSIWYG Visual Cleanup */
 
 .wp-editor-container {
@@ -382,7 +388,7 @@ body {
 	background: transparent;
 }
 
-.widget, .postbox, .menu-item-settings, .welcome-panel {
+.widget, .postbox, .welcome-panel {
 	background: #fff !important;
 	border: 1px solid #e3e3e3 !important;
 	margin: 0 0 25px 0 !important;

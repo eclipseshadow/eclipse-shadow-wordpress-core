@@ -39,18 +39,12 @@ class Eclipse_Shadow_WP_Core {
 
 	private function check_for_updates() {
 
-		require_once 'lib/updater.php';
-
-		if ( !defined('WP_GITHUB_FORCE_UPDATE') ) {
-			// For Debugging - Will force update checks on every page load
-			//define( 'WP_GITHUB_FORCE_UPDATE', true );
-		}
-
-		if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
+		if ( is_admin() && class_exists('WP_GitHub_Updater') ) {
 
 			$config = array(
-				'slug' => plugin_basename( __FILE__ ),
-				'proper_folder_name' => dirname( plugin_basename( __FILE__ ) ),
+				// These top 2 might not work on older PHP installs - I've seen basename() behave strangely
+				'slug' => basename(dirname(__FILE__)) .'/'. basename(__FILE__),
+				'proper_folder_name' => basename(dirname(__FILE__)),
 				'api_url' => 'https://api.github.com/repos/eclipseshadow/eclipse-shadow-wordpress-core',
 				'raw_url' => 'https://raw.github.com/eclipseshadow/eclipse-shadow-wordpress-core/master',
 				'github_url' => 'https://github.com/eclipseshadow/eclipse-shadow-wordpress-core',

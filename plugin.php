@@ -23,7 +23,7 @@ class Eclipse_Shadow_WP_Core {
 
 	public function __construct() {
 
-		$this->check_for_updates();
+		add_action('init', array($this, '_check_for_updates'));
 
 		// Load Scripts & Styles
 
@@ -35,9 +35,13 @@ class Eclipse_Shadow_WP_Core {
 
 		add_action('wp_head', array( $this, '_remove_html_top_margin' ), 10000 );
 
+		// Setup Theme Defaults
+
+		add_action('setup_theme', array( $this, '_add_image_sizes' ));
+
 	}
 
-	private function check_for_updates() {
+	public function _check_for_updates() {
 
 		if ( is_admin() && class_exists('WP_GitHub_Updater') ) {
 
@@ -102,6 +106,13 @@ class Eclipse_Shadow_WP_Core {
 
 	}
 
+	public function _add_image_sizes() {
+
+		add_image_size( 'Small', 225, 140 );
+
+	}
+
 }
 
-add_action('init', create_function('', '$eclipse_shadow_wp_core = new Eclipse_Shadow_WP_Core();'));
+$es_create_wp_core_obj = create_function('', '$eclipse_shadow_wp_core = new Eclipse_Shadow_WP_Core();');
+$es_create_wp_core_obj();

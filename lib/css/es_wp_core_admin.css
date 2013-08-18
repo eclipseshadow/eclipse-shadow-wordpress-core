@@ -589,9 +589,9 @@ th.sortable a:hover, th.sortable a:active, th.sortable a:focus {
 .wp-core-ui .button-secondary,
 .wp-core-ui .button.button-small,
 .wp-core-ui .button-group.button-small .button {
-	background: #3B3E40;
-	border-color: #262626;
-	color: #DDDDDD;
+	background: #3B3E40 !important;
+	border-color: #262626 !important;
+	color: #DDDDDD !important;
 	text-shadow: none;
 	height: auto;
 	padding: 3px 10px 3px;

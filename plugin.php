@@ -15,13 +15,17 @@ License: Undecided
  *
  * Eclipse Shadow's In-House WP Core Functionality & Modifications Plugin
  *
- * @todo WYSIWYG Word Count doesn't work when using CKEditor
- * @todo Write custom CKEditor add-on to replace the "Visual/HTML" tabs & "Source" button with an ACE HTML editor! (Note: CKEditor has an Ace Code Block add-on)
- * @todo Give Wordpress Admin a visual overhaul to match Eclipse Shadow's branding
+ * @todo Update all scripts & stylesheets in all extensions to use a single VERSION constant for cache purging
  */
 class Eclipse_Shadow_WP_Core {
 
 	public function __construct() {
+
+		// Load after Updater
+
+		add_action( 'activated_plugin', array( $this, '_es_wp_core_load_after_updater' ));
+
+		// Check for Updates
 
 		add_action('init', array($this, '_check_for_updates'));
 
@@ -33,11 +37,60 @@ class Eclipse_Shadow_WP_Core {
 		add_action( 'wp_enqueue_scripts', array( $this, '_load_styles' ), 10000 );
 		add_action( 'login_enqueue_scripts', array( $this, '_load_login_styles' ), 10000 );
 
-		add_action('wp_head', array( $this, '_remove_html_top_margin' ), 10000 );
+		//
+		// NEW
+		//
 
-		// Setup Theme Defaults
+		// Utilities - Code Editor, Rich Text Editor, Media Manager Dialog, etc
 
-		add_action('setup_theme', array( $this, '_add_image_sizes' ));
+		require_once 'lib/es_utilities/classes/ES_Utilities.class.php';
+
+		new ES_Utilities();
+
+		// User Control
+
+		require_once 'lib/es_user_control/classes/ES_User_Control.class.php';
+
+		new ES_User_Control();
+
+		// Interface Control & Cleanup
+
+		require_once 'lib/es_interface_control/classes/ES_Interface_Control.class.php';
+
+		new ES_Interface_Control();
+
+		// Widget & Module Constants
+
+		define('ES_WIDGETS_DIR', realpath( dirname(__FILE__). '/lib/es_wp_widgets/widgets/') );
+		define('ES_WIDGETS_DIR_URL', plugins_url( '/lib/es_wp_widgets/widgets', __FILE__ ) );
+
+		// User Assistance (Help Screens, etc)
+
+		require_once 'lib/es_user_assistance/classes/ES_User_Assistance.class.php';
+
+		new ES_User_Assistance();
+
+		// Media Management
+
+		require_once 'lib/es_media_management/classes/ES_Media_Management.class.php';
+
+		new ES_Media_Management();
+
+		// Load Carrington Build
+
+		require_once 'lib/es_carrington_build/classes/ES_Carrington_Build.class.php';
+
+		new ES_Carrington_Build( ES_WIDGETS_DIR, ES_WIDGETS_DIR_URL );
+
+		// Load ES Widgets
+
+		require_once 'lib/es_wp_widgets/classes/ES_WP_Widget_Admin.class.php';
+
+		// Disable dynamic js & css for ES Widgets when Carrington Build is enabled (duplicate js & css)
+		define('ES_WP_WIDGETS_DISPLAY_DYNAMIC_JS', false);
+		define('ES_WP_WIDGETS_DISPLAY_DYNAMIC_CSS', false);
+
+		new ES_WP_Widget_Admin( ES_WIDGETS_DIR );
 
 	}
 
@@ -68,51 +121,63 @@ class Eclipse_Shadow_WP_Core {
 
 	public function _load_scripts() {
 
-		//wp_enqueue_script('jquery');
-		//wp_enqueue_script( 'pp_css_admin', plugins_url('/lib/js/pp_css_admin.js', __FILE__), array('es_ace_code_editor', 'jquery'), 1.0 );
+		if ( is_admin() ) {
+			// WP Admin
+		}
+		else {
+			// Front End
+
+			wp_enqueue_script('es-jquery-ui', plugins_url( '/lib/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js', __FILE__ ), array('jquery'), 1.0 );
+		}
 
 	}
 
 	public function _load_styles() {
 
 		if ( is_admin() ) {
+
 			// WP Admin
 
+			wp_enqueue_style( 'es_wp_jquery_ui', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/jquery-ui/cupertino/jquery-ui-1.10.3.custom.min.css', array(), 1.1 );
 			wp_enqueue_style( 'es_wp_core_admin', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_core_admin.css', array(), 1.1 );
-			wp_enqueue_style( 'es_wp_admin_toolbar', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_admin_toolbar.css', array(), 1.0 );
 		}
 		else {
 			// Front End
 
-			wp_enqueue_style( 'es_wp_admin_toolbar', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_admin_toolbar.css', array(), 1.0 );
+			wp_enqueue_style( 'es_wp_jquery_ui', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/jquery-ui/cupertino/jquery-ui-1.10.3.custom.min.css', array(), 1.1 );
+			wp_enqueue_style( 'es_wp_core_front_end', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_core_front_end.css', array(), 1.1 );
 		}
 
 	}
 
 	public function _load_login_styles() {
 
+		/*
+		 * @interface_cleanup
+		 */
 		wp_enqueue_style( 'es_wp_login', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_login.css', array(), 1.0 );
 
 	}
 
-	public function _remove_html_top_margin() {
+	public function _es_wp_core_load_after_updater() {
 
-		if ( is_user_logged_in() ) {
-			?>
-			<style type="text/css">
-				html { margin-top: 0 !important; }
-			</style>
-		<?php }
+		$path = basename(dirname(__FILE__)) .'/'. basename(__FILE__);
 
-	}
+		if ( $plugins = get_option( 'active_plugins' ) ) {
+			if ( $key = array_search( $path, $plugins ) ) {
+				if ( $es_updater_key = array_search( 'es_plugin_updater', $plugins ) ) {
+					array_splice( $plugins, $es_updater_key++, 0, $path );
+				}
+				else {
+					array_splice( $plugins, $key, 1 );
+					array_unshift( $plugins, $path );
+				}
 
-	public function _add_image_sizes() {
-
-		add_image_size( 'Small', 225, 140 );
-
+				update_option( 'active_plugins', $plugins );
+			}
+		}
 	}
 
 }
 
-$es_create_wp_core_obj = create_function('', '$eclipse_shadow_wp_core = new Eclipse_Shadow_WP_Core();');
-$es_create_wp_core_obj();
+new Eclipse_Shadow_WP_Core();

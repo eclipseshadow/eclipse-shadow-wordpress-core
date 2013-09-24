@@ -1,0 +1,35 @@
+.es-cfct-linked-image-responsive-image {
+	max-width: 100%;
+	height: auto;
+}
+
+.es-cfct-linked-image-non-responsive-image {
+	width: auto;
+	height: auto;
+	max-width: none;
+	max-height: none;
+}
+
+.es-cfct-linked-image .cfct-mod-content {
+	position: relative;
+	z-index: 1;
+}
+
+.es-cfct-linked-image-image-align-left {
+	float: left;
+	margin: 0 20px 20px 0;
+}
+
+.es-cfct-linked-image-image-align-right {
+	float: right;
+	margin: 0 0 20px 20px;
+}
+
+.es-cfct-linked-image-image-align-center {
+	float: none;
+	text-align: center;
+}
+
+.es-cfct-linked-image-clear {
+	clear: both;
+}

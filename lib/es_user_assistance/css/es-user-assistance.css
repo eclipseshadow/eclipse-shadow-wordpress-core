@@ -1,0 +1,88 @@
+/* Help Button (top right) */
+#contextual-help-link-wrap {
+	background-color: #C03E3E;
+}
+#contextual-help-link-wrap a {
+	color: #fff;
+}
+
+/* Help Tabs */
+.es_help_sidenote {
+	font-style: italic;
+	color: #03B0DA;
+	font-weight: normal;
+}
+
+.help-tab-content img {
+	margin: 5px 10px 5px 0;
+	border: 4px solid #DCE7E9;
+}
+.help-tab-content img.alignright {
+	margin-left: 10px;
+	margin-right: 0;
+}
+
+.es-goto-link-target-pad-h {
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+.es-goto-link-target-pad-v {
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+}
+.es-goto-link-target-display-inline-block {
+	display: inline-block !important;
+}
+
+.es_help_heading {
+	font-size: 1.3em;
+	font-weight: 600;
+}
+
+/* Admin Messages */
+.es_admin_message {
+	margin-left: -20px;
+	padding: 6px 25px;
+	font-weight: bold;
+	font-size: 13px;
+}
+.es_admin_message_content {
+	text-align: center;
+	margin-right: 260px;
+}
+
+.es_admin_message_controls {
+	float: right;
+	width: 260px;
+}
+.es_admin_message_controls a {
+	margin-left: 20px;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+	font-size: 13px;
+}
+.es_admin_message_notice {
+	background-color: #f8f8db;
+	border-bottom: 1px solid #a59e63;
+	color: #a59e63;
+}
+.es_admin_message_success {
+	background-color: #def6dc;
+	border-bottom: 1px solid #7ea37b;
+	color: #7ea37b;
+}
+.es_admin_message_warning {
+	background-color: #ffd8d4;
+	border-bottom: 1px solid #ad7676;
+	color: #ad7676;
+}
+.es_admin_message_notice .es_admin_message_controls a {
+	color: #a59e63;
+}
+.es_admin_message_success .es_admin_message_controls a {
+	color: #7ea37b;
+}
+.es_admin_message_warning .es_admin_message_controls a {
+	color: #ad7676;
+}

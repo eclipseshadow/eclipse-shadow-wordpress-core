@@ -1,0 +1,75 @@
+.es-loop-filters-container {
+	margin-bottom: 20px;
+}
+
+.es_loop_filter {
+	background: #DEEDF7;
+	border: 1px solid #AED0EA;
+	border-radius: 4px;
+	padding: 10px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.es_loop_filter_preview {
+	font-style: italic;
+}
+
+.es_loop_filter_preview_label {
+	font-style: normal;
+	font-weight: bold;
+	color: #7497B1;
+}
+
+.es_loop_filter_controls {
+	float: right;
+	margin-left: 25px;
+}
+
+.es_loop_filter_controls a {
+	margin-left: 20px;
+	text-decoration: none;
+}
+
+.es_loop_filter_options {
+	text-align: center;
+}
+
+.es_loop_filter_option {
+	margin-left: 25px;
+	display: block;
+	float: left;
+	text-decoration: none;
+}
+.es_loop_filter_option:focus {
+	outline: 0;
+}
+.es_loop_filter_option:first-child {
+	margin-left: 0;
+}
+.es_loop_filter_option_label {
+	display: block;
+	margin-top: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.es_loop_custom_template_markup_indicator {
+	color: #930000;
+	display: none;
+}
+
+.es-custom-template-markup-btn {
+	margin-right: 10px !important;
+}
+
+.es_loop_filter_relationship_wrapper {
+	display: none;
+	margin-top: 10px !important;
+}
+
+.es_loop_filter_relationship_preview {
+	text-transform: capitalize;
+	margin-left: 20px;
+}

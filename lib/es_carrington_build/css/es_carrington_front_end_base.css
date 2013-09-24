@@ -1,0 +1,111 @@
+/**
+ * Add default margins to modules
+ */
+.cfct-module {
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+/**
+ * Remove left-hand margin from modules in first columns
+ */
+.cfct-block-a .cfct-module,
+.cfct-block-ab .cfct-module,
+.cfct-block-abc .cfct-module,
+.cfct-block-d .cfct-module {
+	margin-left: 0;
+}
+
+/**
+ * Remove right-hand margin from modules in last columns
+ */
+.cfct-block-c .cfct-module,
+.cfct-block-bc .cfct-module,
+.cfct-block-abc .cfct-module,
+.cfct-block-e .cfct-module {
+	margin-right: 0;
+}
+
+/**
+ * Keep overflow contained
+ */
+.cfct-module {
+	margin-bottom: 10px;
+	overflow: visible !important;
+}
+
+.cfct-block {
+	overflow: visible !important;
+}
+/**
+ * Keep spacing consistent with margin collapse
+ */
+.cfct-module .cfct-mod-content {
+	margin-bottom: 12px;
+}
+
+/**
+ * Module Edit Border/Links
+ */
+.cfct-module-border:hover {
+	outline-style: none;
+}
+
+.cfct-mod-content:hover {
+	outline-color: #ADDBFF;
+	outline-width: 5px;
+	outline-offset: -5px;
+	outline-style: dashed;
+	position: relative;
+}
+
+.cfct-build-module-edit-link {
+	-moz-box-shadow: inset 0px 1px 0px 0px #a8c8e0 !important;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #a8c8e0 !important;
+	box-shadow: inset 0px 1px 0px 0px #a8c8e0 !important;
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #addbff), color-stop(1, #568bb3) ) !important;
+	background: -moz-linear-gradient( center top, #addbff 5%, #568bb3 100% ) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#addbff', endColorstr='#568bb3') !important;
+	background-color:#addbff !important;
+	-webkit-border-top-left-radius: 6px !important;
+	-moz-border-radius-topleft: 6px !important;
+	border-top-left-radius: 6px !important;
+	-webkit-border-top-right-radius: 6px !important;
+	-moz-border-radius-topright: 6px !important;
+	border-top-right-radius: 6px !important;
+	-webkit-border-bottom-right-radius: 6px !important;
+	-moz-border-radius-bottomright: 6px !important;
+	border-bottom-right-radius: 6px !important;
+	-webkit-border-bottom-left-radius: 6px !important;
+	-moz-border-radius-bottomleft: 6px !important;
+	border-bottom-left-radius: 6px !important;
+	text-indent: 0 !important;
+	border: 1px solid #80a6c4 !important;
+	color: #ffffff !important;
+	font-family: Arial !important;
+	font-size: 15px !important;
+	font-weight: bold !important;
+	font-style: normal !important;
+	height: 50px !important;
+	line-height: 50px !important;
+	width: 100px !important;
+	text-decoration: none !important;
+	text-align: center !important;
+	text-shadow: 1px 1px 3px #386b91 !important;
+
+	display: none;
+	padding: 0;
+	z-index: 9999;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -50px;
+	margin-top: -25px;
+}
+
+.cfct-build-module-edit-link:hover {
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #568bb3), color-stop(1, #addbff) ) !important;
+	background: -moz-linear-gradient( center top, #568bb3 5%, #addbff 100% ) !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#568bb3', endColorstr='#addbff') !important;
+	background-color: #568bb3 !important;
+}

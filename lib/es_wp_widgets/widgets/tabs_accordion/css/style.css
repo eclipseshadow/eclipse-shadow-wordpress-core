@@ -1,0 +1,12 @@
+.es-accordion-item:after,
+.es-tabs-item:after {
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+.es-accordion-item, .es-tabs-item {display:inline-block;}
+/* Hide from IE Mac \*/
+.es-accordion-item, .es-tabs-item {display:block;}
+/* End hide from IE Mac */

@@ -1,0 +1,80 @@
+/**
+ * Generic Styles
+ */
+.alignright {
+  float: right;
+}
+.alignleft {
+  float: left;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  display: inline-block;
+}
+/* Hide from IE Mac \*/
+.clearfix {
+  display: block;
+}
+/* End hide from IE Mac */
+.es_icon {
+  background: #cccccc url(/wp-content/plugins/es_wp_core/lib/images/es_icons/button-gradients-sprite.gif) 0 -800px;
+  border: 1px solid #BBB;
+  border-color: #BBB #BBB #B0B0B0;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+}
+.es_icon_inner {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+.es_icon:focus {
+  outline: 0;
+}
+.es_icon_widget_area .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_widget_area.png);
+}
+.es_icon_rich_text .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_rich_text.png);
+}
+.es_icon_raw_html .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_raw_html.png);
+}
+.es_icon_callout .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_callout.png);
+}
+.es_icon_divider .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_divider.png);
+}
+.es_icon_taxonomy .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_taxonomy.png);
+}
+.es_icon_user .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_user.png);
+}
+.es_icon_numeric .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_numeric.png);
+}
+.es_icon_post_status .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_post_status.png);
+}
+.es_icon_post_calendar .es_icon_inner {
+  background: url(/wp-content/plugins/es_wp_core/lib/images/es_icons/es_icon_calendar.png);
+}
+.es_dialog {
+  display: none;
+}

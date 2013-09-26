@@ -36,7 +36,8 @@ class ES_Table_Module extends ES_Carrington_Module {
 
 		ob_start();
 
-		require dirname(__FILE__) . '/../js/admin.js';
+		$path = SCRIPT_DEBUG ? '/../js/src/admin.js' : '/../js/build/admin.min.js';
+		require dirname(__FILE__) . $path;
 
 		echo '
 

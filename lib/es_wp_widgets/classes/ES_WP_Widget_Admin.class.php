@@ -75,17 +75,21 @@ class ES_WP_Widget_Admin {
 		}
 
 		if ( is_admin() && true == $is_widgets_admin ) {
-			wp_enqueue_script('es-jquery-ui', plugins_url( '/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js', dirname(__FILE__) ), array('jquery'), 1.0 );
-			wp_enqueue_script('es-widget-helpers', plugins_url( '/js/es_widgets_helpers.js', dirname(__FILE__) ), array('jquery'), 1.0 );
-			wp_enqueue_script('es-widget-admin-js', plugins_url( '/js/es_widgets_admin.js', dirname(__FILE__) ), array('es-jquery-ui', 'es-widget-helpers'), 1.0 );
+			wp_enqueue_script('es-jquery-ui', plugins_url( '/js/build/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js', dirname(__FILE__) ), array('jquery'), 1.0 );
+			$path = SCRIPT_DEBUG ? '/js/src/es_widgets_helpers.js' : '/js/build/es_widgets_helpers.min.js';
+			wp_enqueue_script('es-widget-helpers', plugins_url(  $path, dirname(__FILE__) ), array('jquery'), 1.0 );
+			$path = SCRIPT_DEBUG ? '/js/src/es_widgets_admin.js' : '/js/build/es_widgets_admin.min.js';
+			wp_enqueue_script('es-widget-admin-js', plugins_url( $path, dirname(__FILE__) ), array('es-jquery-ui', 'es-widget-helpers'), 1.0 );
 			wp_enqueue_script('es-widgets-admin-js', admin_url('?es_widget_action=es_widget_admin_js'), array('jquery', 'es-widget-admin-js'), 1.0 );
 		}
 		else if ( $is_carrington_editor ) {
-			wp_enqueue_script('es-widget-helpers', plugins_url( '/js/es_widgets_helpers.js', dirname(__FILE__) ), array('jquery'), 1.0 );
+			$path = SCRIPT_DEBUG ? '/js/src/es_widgets_helpers.js' : '/js/build/es_widgets_helpers.min.js';
+			wp_enqueue_script('es-widget-helpers', plugins_url( $path, dirname(__FILE__) ), array('jquery'), 1.0 );
 		}
 		else if ( ! is_admin() ) {
 			wp_enqueue_script('jquery');
-			wp_enqueue_script('es_widgets_front_end_js', plugins_url('/js/es_widgets_front_end.js', dirname(__FILE__) ), array('jquery'), 1.0 );
+			$path = SCRIPT_DEBUG ? '/js/src/es_widgets_front_end.js' : '/js/build/es_widgets_front_end.min.js';
+			wp_enqueue_script('es_widgets_front_end_js', plugins_url( $path, dirname(__FILE__) ), array('jquery'), 1.0 );
 
 			if ( defined('ES_WP_WIDGETS_DISPLAY_DYNAMIC_JS') && true == ES_WP_WIDGETS_DISPLAY_DYNAMIC_JS ) {
 				wp_enqueue_script('es-widgets-dynamic-js', admin_url('?es_widget_action=es_widget_js'), array('es_widgets_front_end_js'), 1.0 );
@@ -108,14 +112,14 @@ class ES_WP_Widget_Admin {
 		}
 
 		if (  is_admin() && true == $is_widgets_admin ) {
-			wp_enqueue_style('es-widget-admin-css', plugins_url( '/css/es_widgets_admin.css', dirname(__FILE__) ), array(), 1.0 );
+			wp_enqueue_style('es-widget-admin-css', plugins_url( '/css/build/es_widgets_admin.css', dirname(__FILE__) ), array(), 1.0 );
 			wp_enqueue_style('es-widgets-admin-css',admin_url('?es_widget_action=es_widget_admin_css'), array(), 1.0, 'screen');
 		}
 		else if ( $is_carrington_editor ) {
-			wp_enqueue_style('es-widget-admin-css', plugins_url( '/css/es_widgets_admin.css', dirname(__FILE__) ), array(), 1.0 );
+			wp_enqueue_style('es-widget-admin-css', plugins_url( '/css/build/es_widgets_admin.css', dirname(__FILE__) ), array(), 1.0 );
 		}
 		else if ( ! is_admin() ) {
-			wp_enqueue_style('es-widgets-css', plugins_url('/css/es_widgets_front_end.css', dirname(__FILE__) ), array(), 1.0, 'screen');
+			wp_enqueue_style('es-widgets-css', plugins_url('/css/build/es_widgets_front_end.css', dirname(__FILE__) ), array(), 1.0, 'screen');
 
 			if ( defined('ES_WP_WIDGETS_DISPLAY_DYNAMIC_CSS') && true == ES_WP_WIDGETS_DISPLAY_DYNAMIC_CSS ) {
 				wp_enqueue_style('es-widgets-dynamic-css', admin_url('?es_widget_action=es_widget_css'), array('es-widgets-css'), 1.0, 'screen');

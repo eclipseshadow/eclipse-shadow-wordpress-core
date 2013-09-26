@@ -67,46 +67,17 @@ trait ES_Rich_Text_Trait {
 		return $this->load_widget_view( $instance, $params );
 	}
 
-	// CSS
-
-	public function css() {
-
-		/*ob_start();
-
-		require dirname(__FILE__) . '/../css/style.css';
-
-		$css = ob_get_contents();
-		ob_end_clean();
-
-		return $css;*/
-	}
-
 	// Admin CSS
 
 	public function admin_css() {
 
 		ob_start();
 
-		require dirname(__FILE__) . '/../css/admin_style.css';
+		require dirname(__FILE__) . '/../css/build/admin_style.css';
 
 		$css = ob_get_contents();
 		ob_end_clean();
 
 		return $css;
-	}
-
-	// JS
-
-	public function js() {
-
-		/*ob_start();
-
-		require dirname(__FILE__) . '/../js/front_end.js';
-
-		$js = ob_get_contents();
-		ob_end_clean();
-
-		return $js;*/
-
 	}
 }

@@ -55,7 +55,8 @@ class ES_Media_Management {
 
 	public function _enqueue_scripts() {
 
-		wp_enqueue_script('es_media_management', plugins_url('/js/es_media_admin.js', dirname(__FILE__)), array('jquery'), 1.0);
+		$path = SCRIPT_DEBUG ? '/js/src/es_media_admin.js' : '/js/build/es_media_admin.min.js';
+		wp_enqueue_script('es_media_management', plugins_url( $path, dirname(__FILE__)), array('jquery'), 1.0);
 	}
 
 	public function _add_image_sizes() {

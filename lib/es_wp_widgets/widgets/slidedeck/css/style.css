@@ -1,7 +1,0 @@
-/* SlideDeck thumbnails don't fit in their container without stomping out these styles */
-.slidedeck-frame,
-.slidedeck-frame * {
-	-webkit-box-sizing: content-box !important;
-	-moz-box-sizing: content-box !important;
-	box-sizing: content-box !important;
-}

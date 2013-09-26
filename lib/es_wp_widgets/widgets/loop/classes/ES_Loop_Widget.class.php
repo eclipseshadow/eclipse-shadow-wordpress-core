@@ -39,7 +39,8 @@ class ES_Loop_Widget extends ES_WP_Widget {
 
 		ob_start();
 
-		require dirname(__FILE__) . '/../js/admin.js';
+		$path = SCRIPT_DEBUG ? '/../js/src/admin.js' : '/../js/build/admin.min.js';
+		require dirname(__FILE__) . $path;
 
 		echo '
 

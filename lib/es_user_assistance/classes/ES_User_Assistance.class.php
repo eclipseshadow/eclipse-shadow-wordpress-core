@@ -106,14 +106,15 @@ class ES_User_Assistance {
 	public function _enqueue_scripts() {
 
 		wp_enqueue_script('jquery');
-		wp_enqueue_script('es-jquery-ui', plugins_url('/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js', dirname(__FILE__) ), array('jquery'), 1.0 );
-		wp_enqueue_script('es-user-assistance-js', plugins_url('/js/es_user_assistance.js', dirname(__FILE__)), array('es-jquery-ui'), 1.0);
+		wp_enqueue_script('es-jquery-ui', plugins_url('/js/build/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js', dirname(__FILE__) ), array('jquery'), 1.0 );
+		$path = SCRIPT_DEBUG ? '/js/src/es_user_assistance.js' : '/js/build/es_user_assistance.min.js';
+		wp_enqueue_script('es-user-assistance-js', plugins_url( $path, dirname(__FILE__)), array('es-jquery-ui'), 1.0);
 
 	}
 
 	public function _enqueue_styles() {
 
-		wp_enqueue_style('es-user-assitance-css', plugins_url('/css/es-user-assistance.css', dirname(__FILE__)), array(), 1.0);
+		wp_enqueue_style('es-user-assitance-css', plugins_url('/css/build/es-user-assistance.css', dirname(__FILE__)), array(), 1.0);
 
 	}
 

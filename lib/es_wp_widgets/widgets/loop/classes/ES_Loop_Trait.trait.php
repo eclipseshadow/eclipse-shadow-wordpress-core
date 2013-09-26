@@ -451,7 +451,7 @@ trait ES_Loop_Trait {
 
 		ob_start();
 
-		require dirname(__FILE__) . '/../css/style.css';
+		require dirname(__FILE__) . '/../css/build/style.css';
 
 		$css = ob_get_contents();
 		ob_end_clean();
@@ -463,7 +463,7 @@ trait ES_Loop_Trait {
 
 		ob_start();
 
-		require dirname(__FILE__) . '/../css/admin_style.css';
+		require dirname(__FILE__) . '/../css/build/admin_style.css';
 
 		$css = ob_get_contents();
 		ob_end_clean();

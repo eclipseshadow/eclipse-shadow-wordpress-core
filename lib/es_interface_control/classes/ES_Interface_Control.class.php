@@ -183,16 +183,17 @@ class ES_Interface_Control {
 	public function _enqueue_scripts() {
 
 		wp_enqueue_scripts('jquery');
-		wp_enqueue_script('es-interface-control-replace-text', plugins_url('/js/jquery.ba-replacetext.min.js', dirname(__FILE__)), array('jquery'), 1.0 );
-		wp_enqueue_script('es-interface-control-modernizr', plugins_url('/js/modernizr.custom.33001.js', dirname(__FILE__)), array('jquery'), 1.0 );
-		wp_enqueue_script('es-interface-control-js', plugins_url('/js/es-interface-control.js', dirname(__FILE__)), array('es-interface-control-replace-text'), 1.0 );
+		wp_enqueue_script('es-interface-control-replace-text', plugins_url('/js/build/jquery.ba-replacetext.min.js', dirname(__FILE__)), array('jquery'), 1.0 );
+		wp_enqueue_script('es-interface-control-modernizr', plugins_url('/js/build/modernizr.custom.33001.js', dirname(__FILE__)), array('jquery'), 1.0 );
+		$path = SCRIPT_DEBUG ? '/js/src/es-interface-control.js' : '/js/build/es-interface-control.min.js';
+		wp_enqueue_script('es-interface-control-js', plugins_url( $path, dirname(__FILE__)), array('es-interface-control-replace-text'), 1.0 );
 		wp_enqueue_script('es-interface-control-dynamic-js', admin_url('?es_interface_control_action=es_interface_control_js'), array('es-interface-control-js'), 1.0 );
 
 	}
 
 	public function _enqueue_styles() {
 
-		wp_enqueue_style('es-interface-control-css', plugins_url('/css/es-interface-control.css', dirname(__FILE__)), array(), 1.0);
+		wp_enqueue_style('es-interface-control-css', plugins_url('/css/build/es-interface-control.css', dirname(__FILE__)), array(), 1.0);
 
 	}
 

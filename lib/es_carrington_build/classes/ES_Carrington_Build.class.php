@@ -69,11 +69,11 @@ class ES_Carrington_Build {
 		}
 
 		if ( is_admin() && true == $load_editor_css ) {
-			wp_enqueue_style('es_carrington_admin', plugins_url('/css/es_carrington_admin.css', dirname(__FILE__)), array(), 0.1);
+			wp_enqueue_style('es_carrington_admin', plugins_url('/css/build/es_carrington_admin.css', dirname(__FILE__)), array(), 0.1);
 		}
 		else {
-			wp_enqueue_style('es_carrington_base', plugins_url('/css/es_carrington_front_end_base.css', dirname(__FILE__)), array(), 0.1);
-			wp_enqueue_style('es_carrington_responsive', plugins_url('/css/es_carrington_front_end_responsive.css', dirname(__FILE__)), array(), 0.1);
+			wp_enqueue_style('es_carrington_base', plugins_url('/css/build/es_carrington_front_end_base.css', dirname(__FILE__)), array(), 0.1);
+			wp_enqueue_style('es_carrington_responsive', plugins_url('/css/build/es_carrington_front_end_responsive.css', dirname(__FILE__)), array(), 0.1);
 		}
 
 	}
@@ -89,11 +89,13 @@ class ES_Carrington_Build {
 		}
 
 		if ( is_admin() && true == $load_editor_js ) {
-			wp_enqueue_script('es_carrington_admin', plugins_url('/js/es_carrington_admin.js', dirname(__FILE__)), array('jquery'), 0.1);
+			$path = SCRIPT_DEBUG ? '/js/src/es_carrington_admin.js' : '/js/build/es_carrington_admin.min.js';
+			wp_enqueue_script('es_carrington_admin', plugins_url( $path, dirname(__FILE__)), array('jquery'), 0.1);
 		}
 		else {
 			if ( is_user_logged_in() ){
-				wp_enqueue_script('carrington_edit_links', plugins_url('/js/es_carrington_front_end.js', dirname(__FILE__)), array(), 0.1);
+				$path = SCRIPT_DEBUG ? '/js/src/es_carrington_front_end.js' : '/js/build/es_carrington_front_end.min.js';
+				wp_enqueue_script('carrington_edit_links', plugins_url( $path, dirname(__FILE__)), array(), 0.1);
 			}
 		}
 

@@ -105,7 +105,7 @@ trait ES_Tabs_Accordion_Trait {
 
 		ob_start();
 
-		require dirname(__FILE__) . '/../css/style.css';
+		require dirname(__FILE__) . '/../css/build/style.css';
 
 		$css = ob_get_contents();
 		ob_end_clean();
@@ -119,7 +119,7 @@ trait ES_Tabs_Accordion_Trait {
 
 		ob_start();
 
-		require dirname(__FILE__) . '/../css/admin_style.css';
+		require dirname(__FILE__) . '/../css/build/admin_style.css';
 
 		$css = ob_get_contents();
 		ob_end_clean();
@@ -133,7 +133,8 @@ trait ES_Tabs_Accordion_Trait {
 
 		ob_start();
 
-		require dirname(__FILE__) . '/../js/front_end.js';
+		$path = SCRIPT_DEBUG ? '/../js/src/front_end.js' : '/../js/build/front_end.min.js';
+		require dirname(__FILE__) . $path;
 
 		$js = ob_get_contents();
 		ob_end_clean();

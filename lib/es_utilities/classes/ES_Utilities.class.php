@@ -94,12 +94,12 @@ class ES_Utilities {
 
 	public function _admin_enqueue_styles() {
 
-		wp_enqueue_style( 'es_tokenized_input', plugins_url( '/js/jquery_tokenized_input/styles/token-input.css', dirname(__FILE__)), array(), 1.0 );
+		wp_enqueue_style( 'es_tokenized_input', plugins_url( '/js/build/jquery_tokenized_input/styles/token-input.css', dirname(__FILE__)), array(), 1.0 );
 		wp_enqueue_style( 'es_tokenized_input_facebook', plugins_url( '/js/jquery_tokenized_input/styles/token-input-facebook.css', dirname(__FILE__)), array('es_tokenized_input'), 1.0 );
 
-		wp_enqueue_style( 'es_dynatree', plugins_url( '/js/jquery_dynatree/skin/ui.dynatree.css', dirname(__FILE__)), array(), 1.0 );
+		wp_enqueue_style( 'es_dynatree', plugins_url( '/js/build/jquery_dynatree/skin/ui.dynatree.css', dirname(__FILE__)), array(), 1.0 );
 
-		wp_enqueue_style( 'es_utilities', plugins_url( '/css/es_utilities_admin.css', dirname(__FILE__) ), array('es_wp_core_admin', 'es_tokenized_input_facebook'), 1.0 );
+		wp_enqueue_style( 'es_utilities', plugins_url( '/css/build/es_utilities_admin.css', dirname(__FILE__) ), array('es_wp_core_admin', 'es_tokenized_input_facebook'), 1.0 );
 	}
 
 	public function _admin_print_scripts() {
@@ -129,15 +129,17 @@ class ES_Utilities {
 			//wp_enqueue_script( 'jquery-touch-punch' );
 		}
 
-		wp_enqueue_script('es_word_count', plugins_url('/js/es-word-count.js', dirname(__FILE__)), array('jquery'), false, 1);
+		$path = SCRIPT_DEBUG ? '/js/src/es-word-count.js' : '/js/build/es-word-count.min.js';
+		wp_enqueue_script('es_word_count', plugins_url( $path, dirname(__FILE__)), array('jquery'), false, 1);
 
-		wp_enqueue_script('es_ace_editor', plugins_url('/js/ace/src-min-noconflict/ace.js', dirname(__FILE__)), array(), 1.0);
+		wp_enqueue_script('es_ace_editor', plugins_url('/js/build/ace/src-min-noconflict/ace.js', dirname(__FILE__)), array(), 1.0);
 
-		wp_enqueue_script('es_tokenized_input', plugins_url('/js/jquery_tokenized_input/src/jquery.tokeninput.js', dirname(__FILE__)), array('jquery'), 1.0);
+		wp_enqueue_script('es_tokenized_input', plugins_url('/js/build/jquery_tokenized_input/src/jquery.tokeninput.js', dirname(__FILE__)), array('jquery'), 1.0);
 
-		wp_enqueue_script('es_dynatree', plugins_url('/js/jquery_dynatree/jquery.dynatree.js', dirname(__FILE__)), array('jquery'), 1.0);
+		wp_enqueue_script('es_dynatree', plugins_url('/js/build/jquery_dynatree/jquery.dynatree.js', dirname(__FILE__)), array('jquery'), 1.0);
 
-		wp_enqueue_script('es_utilities', plugins_url('/js/es_utilities.js', dirname(__FILE__)), array('jquery', 'es_ace_editor', 'es_word_count', 'es_tokenized_input', 'es_dynatree'), 1.0);
+		$path = SCRIPT_DEBUG ? '/js/src/es_utilities.js' : '/js/build/es_utilities.min.js';
+		wp_enqueue_script('es_utilities', plugins_url( $path, dirname(__FILE__)), array('jquery', 'es_ace_editor', 'es_word_count', 'es_tokenized_input', 'es_dynatree'), 1.0);
 	}
 
 	public function _admin_print_styles() {
@@ -185,12 +187,13 @@ class ES_Utilities {
 
 	public function _enqueue_styles() {
 
-		wp_enqueue_style('es_utilities_front_end', plugins_url('/css/es_utilities_front_end.css', dirname(__FILE__)), array(), 1.0);
+		wp_enqueue_style('es_utilities_front_end', plugins_url('/css/build/es_utilities_front_end.css', dirname(__FILE__)), array(), 1.0);
 	}
 
 	public function _enqueue_scripts() {
 
-		wp_enqueue_script('es_utilities_front_end', plugins_url('/js/es_utilities_front_end.js', dirname(__FILE__)), array(), 1.0);
+		$path = SCRIPT_DEBUG ? '/js/src/es_utilities_front_end.js' : '/js/build/es_utilities_front_end.min.js';
+		wp_enqueue_script('es_utilities_front_end', plugins_url( $path, dirname(__FILE__)), array(), 1.0);
 	}
 
 	public static function _ajax_get_wp_editor() {

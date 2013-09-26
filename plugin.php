@@ -21,6 +21,10 @@ class Eclipse_Shadow_WP_Core {
 
 	public function __construct() {
 
+		if ( !defined('SCRIPT_DEBUG') ) {
+			define('SCRIPT_DEBUG', false );
+		}
+
 		// Load after Updater
 
 		add_action( 'activated_plugin', array( $this, '_es_wp_core_load_after_updater' ));
@@ -122,12 +126,16 @@ class Eclipse_Shadow_WP_Core {
 	public function _load_scripts() {
 
 		if ( is_admin() ) {
+
 			// WP Admin
+
+			$path = SCRIPT_DEBUG ? '/lib/js/src/json.js' : '/lib/js/build/json.min.js';
+			wp_enqueue_script('es-jquery-ui', plugins_url( $path, __FILE__ ), array(), 1.0 );
 		}
 		else {
 			// Front End
 
-			wp_enqueue_script('es-jquery-ui', plugins_url( '/lib/js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js', __FILE__ ), array('jquery'), 1.0 );
+			wp_enqueue_script('es-jquery-ui', plugins_url( '/lib/js/build/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js', __FILE__ ), array('jquery'), 1.0 );
 		}
 
 	}
@@ -138,24 +146,21 @@ class Eclipse_Shadow_WP_Core {
 
 			// WP Admin
 
-			wp_enqueue_style( 'es_wp_jquery_ui', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/jquery-ui/cupertino/jquery-ui-1.10.3.custom.min.css', array(), 1.1 );
-			wp_enqueue_style( 'es_wp_core_admin', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_core_admin.css', array(), 1.1 );
+			wp_enqueue_style( 'es_wp_jquery_ui', plugins_url( '/lib/css/build/jquery-ui/cupertino/jquery-ui-1.10.3.custom.min.css', __FILE__ ), array(), 1.1 );
+			wp_enqueue_style( 'es_wp_core_admin', plugins_url( '/lib/css/build/es_wp_core_admin.css', __FILE__ ), array(), 1.1 );
 		}
 		else {
 			// Front End
 
-			wp_enqueue_style( 'es_wp_jquery_ui', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/jquery-ui/cupertino/jquery-ui-1.10.3.custom.min.css', array(), 1.1 );
-			wp_enqueue_style( 'es_wp_core_front_end', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_core_front_end.css', array(), 1.1 );
+			wp_enqueue_style( 'es_wp_jquery_ui', plugins_url( '/lib/css/build/jquery-ui/cupertino/jquery-ui-1.10.3.custom.min.css', __FILE__ ), array(), 1.1 );
+			wp_enqueue_style( 'es_wp_core_front_end', plugins_url( '/lib/css/build/es_wp_core_front_end.css', __FILE__ ), array(), 1.1 );
 		}
 
 	}
 
 	public function _load_login_styles() {
 
-		/*
-		 * @interface_cleanup
-		 */
-		wp_enqueue_style( 'es_wp_login', WP_PLUGIN_URL .'/'. basename( dirname(__FILE__) ) .'/lib/css/es_wp_login.css', array(), 1.0 );
+		wp_enqueue_style( 'es_wp_login', plugins_url( '/lib/css/build/es_wp_login.css', __FILE__ ), array(), 1.0 );
 
 	}
 
